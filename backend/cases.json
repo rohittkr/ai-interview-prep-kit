@@ -1,0 +1,14 @@
+[
+  {
+    "id": "case-1",
+    "jd": "Software Engineer - Backend\n\nResponsibilities:\n- Design and develop scalable backend services.\n- Build REST APIs.\n- Work with SQL databases.\n- Write unit tests.\n\nRequirements:\n- Strong programming skills in Python or Java.\n- Knowledge of data structures and algorithms.\n- Experience building REST APIs and backend services.\n- Knowledge of SQL and relational databases.\n- Understanding of object-oriented programming.\n- Familiarity with Git.\n- Understanding of unit testing and debugging.\n- Good communication and problem-solving skills.\n\nNice to have:\n- Docker and cloud platform experience.\n- Kubernetes experience.",
+    "company_url": "https://www.microsoft.com",
+    "days": 5
+  },
+  {
+    "id": "case-2",
+    "jd": "Backend Software Engineer\n\nRequirements:\n- Experience with Python.\n- Experience designing REST APIs.\n- Knowledge of relational databases and SQL.\n- Understanding of distributed systems.\n- Familiarity with Docker.\n- Good problem-solving skills.",
+    "company_url": "https://www.github.com",
+    "days": 3
+  }
+]

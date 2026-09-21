@@ -1,0 +1,517 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-09-21T18:32:13.109Z",
+  "kits": [
+    {
+      "id": "case-1",
+      "status": "ok",
+      "kit": {
+        "source": {
+          "company": "www.microsoft.com",
+          "company_url": "https://www.microsoft.com",
+          "role": "Software Engineer - Backend",
+          "location": "",
+          "jd_chars": 616,
+          "researched_at": "2026-09-21T18:32:03.431Z",
+          "pages_used": [
+            "https://www.microsoft.com/",
+            "https://www.microsoft.com/en-in/microsoft-teams/group-chat-software",
+            "https://www.microsoft.com/en-in/microsoft-teams/small-medium-business?icid=mscom_marcom_CPW4a_TeamsForBusiness",
+            "https://www.microsoft.com/en-in/education/products/teams",
+            "https://www.microsoft.com/about",
+            "https://www.microsoft.com/#primaryArea",
+            "https://www.microsoft.com/",
+            "https://www.microsoft.com/en-in/microsoft-365",
+            "https://www.microsoft.com/en-in/windows/"
+          ]
+        },
+        "company_brief": {
+          "summary": "Microsoft is a global technology company whose mission is to empower every person and every organization on the planet to achieve more. The company offers a wide range of products spanning AI, cloud computing, productivity tools, operating systems, gaming, and applications.",
+          "what_they_do": "Microsoft develops and provides software, services, devices, and cloud solutions, including Microsoft 365, Azure, Windows, Surface devices, Xbox, Copilot (AI assistants), Microsoft Teams, Dynamics 365, Power Platform, OneDrive, Outlook, OneNote, and Visual Studio, serving personal, business, enterprise, and educational markets globally.",
+          "sources": [
+            "https://www.microsoft.com/",
+            "https://www.microsoft.com/en-in/microsoft-teams/group-chat-software",
+            "https://www.microsoft.com/en-in/microsoft-teams/small-medium-business?icid=mscom_marcom_CPW4a_TeamsForBusiness",
+            "https://www.microsoft.com/en-in/education/products/teams",
+            "https://www.microsoft.com/about"
+          ]
+        },
+        "role": {
+          "title": "Software Engineer - Backend",
+          "seniority": "",
+          "responsibilities": [
+            "Design and develop scalable backend services.",
+            "Build REST APIs.",
+            "Work with SQL databases.",
+            "Write unit tests."
+          ],
+          "requirements": [
+            {
+              "id": "r1",
+              "text": "Strong programming skills in Python or Java.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r2",
+              "text": "Knowledge of data structures and algorithms.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r3",
+              "text": "Experience building REST APIs and backend services.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r4",
+              "text": "Knowledge of SQL and relational databases.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r5",
+              "text": "Understanding of object-oriented programming.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r6",
+              "text": "Familiarity with Git.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r7",
+              "text": "Understanding of unit testing and debugging.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r8",
+              "text": "Good communication and problem-solving skills.",
+              "kind": "behavioural",
+              "priority": "must"
+            },
+            {
+              "id": "r9",
+              "text": "Docker and cloud platform experience.",
+              "kind": "technical",
+              "priority": "nice"
+            },
+            {
+              "id": "r10",
+              "text": "Kubernetes experience.",
+              "kind": "technical",
+              "priority": "nice"
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "requirement_ids": [
+              "r1",
+              "r2"
+            ],
+            "category": "technical",
+            "prompt": "Implement a Python or Java function that efficiently processes a large stream of incoming chat messages to identify and rank the top K most frequently used emojis or keywords.",
+            "answer_outline": "Candidates should use a hash map to count frequencies and a min-heap (or equivalent priority queue structure) to keep track of the top K elements in O(N log K) time complexity.",
+            "difficulty": 2,
+            "state": "generated"
+          },
+          {
+            "id": "q2",
+            "requirement_ids": [
+              "r3",
+              "r4"
+            ],
+            "category": "technical",
+            "prompt": "Design a REST API endpoint for retrieving user message history from a relational database. Discuss how you would structure the SQL queries and handle pagination efficiently.",
+            "answer_outline": "The answer should outline a secure REST endpoint using GET, a normalized SQL schema (e.g., users, channels, messages tables with appropriate foreign keys and indexes on timestamps), and keyset/cursor-based pagination to handle large datasets effectively.",
+            "difficulty": 2,
+            "state": "generated"
+          },
+          {
+            "id": "q3",
+            "requirement_ids": [
+              "r5",
+              "r7"
+            ],
+            "category": "technical",
+            "prompt": "Explain how you apply object-oriented design principles (such as encapsulation and polymorphism) when building a modular logging or notification service, and how you design unit tests to catch concurrency bugs.",
+            "answer_outline": "Discuss defining clear abstract interfaces for notification dispatchers, implementing concrete subclasses for different channels (e.g., email, push), and using mocking frameworks along with multi-threaded unit testing strategies.",
+            "difficulty": 3,
+            "state": "generated"
+          },
+          {
+            "id": "q4",
+            "requirement_ids": [
+              "r6"
+            ],
+            "category": "technical",
+            "prompt": "Describe your typical Git branching and merging workflow when collaborating on a feature with multiple engineers, and explain how you resolve merge conflicts.",
+            "answer_outline": "Mention feature branching off main/develop, small and descriptive commits, pull requests for code reviews, rebasing vs. merging strategies, and carefully inspecting conflicting diff hunks to preserve intended business logic.",
+            "difficulty": 1,
+            "state": "generated"
+          },
+          {
+            "id": "q5",
+            "requirement_ids": [
+              "r9",
+              "r10"
+            ],
+            "category": "system-design",
+            "prompt": "Design a scalable backend architecture for a real-time messaging application deployed on cloud infrastructure using Docker and Kubernetes.",
+            "answer_outline": "Discuss containerizing the backend service using Docker, deploying pods managed by Kubernetes for auto-scaling, using a message broker (like Redis or Kafka) for pub/sub message distribution across nodes, and load balancing incoming WebSocket or HTTP connections.",
+            "difficulty": 3,
+            "state": "generated"
+          },
+          {
+            "id": "q6",
+            "requirement_ids": [
+              "r8"
+            ],
+            "category": "company-fit",
+            "prompt": "Tell me about a time when you had to debug a critical production issue under tight time constraints. How did you communicate with stakeholders and solve the problem?",
+            "answer_outline": "Look for structured problem-solving (reproduce, isolate, fix), clear and transparent communication updates to team members or stakeholders, and a post-mortem review to prevent future occurrences.",
+            "difficulty": 2,
+            "state": "generated"
+          }
+        ],
+        "flashcards": [
+          {
+            "id": "f1",
+            "front": "How would you efficiently process a large stream of incoming chat messages to identify and rank the top K most frequently used emojis or keywords in Python or Java?",
+            "back": "Use a hash map to count frequencies and a min-heap (or priority queue) to track the top K elements in O(N log K) time complexity.",
+            "requirement_ids": [
+              "r1",
+              "r2"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f2",
+            "front": "How would you design a REST API endpoint to retrieve user message history from a relational database, structure the SQL queries, and handle pagination?",
+            "back": "Outline a GET REST endpoint, a normalized SQL schema with indexes on timestamps, and keyset/cursor-based pagination for large datasets.",
+            "requirement_ids": [
+              "r3",
+              "r4"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f3",
+            "front": "How do you apply object-oriented design principles (like encapsulation and polymorphism) to a modular logging or notification service, and how do you unit test for concurrency bugs?",
+            "back": "Define abstract interfaces for dispatchers, implement concrete subclasses for channels (e.g., email, push), and use mocking frameworks with multi-threaded testing.",
+            "requirement_ids": [
+              "r5",
+              "r7"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f4",
+            "front": "What is your typical Git branching and merging workflow when collaborating on a feature, and how do you resolve merge conflicts?",
+            "back": "Use feature branches off main/develop, small commits, pull requests for code reviews, and careful inspection of conflicting diff hunks during rebasing or merging.",
+            "requirement_ids": [
+              "r6"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f5",
+            "front": "How would you design a scalable backend architecture for a real-time messaging app using Docker, Kubernetes, and a cloud platform?",
+            "back": "Containerize services with Docker, manage auto-scaling pods with Kubernetes, use a message broker for pub/sub distribution, and load balance incoming connections.",
+            "requirement_ids": [
+              "r9",
+              "r10"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f6",
+            "front": "Tell me about a time you debugged a critical production issue under tight time constraints. How did you communicate with stakeholders and solve it?",
+            "back": "Demonstrate structured problem-solving (reproduce, isolate, fix), transparent stakeholder communication, and a post-mortem review.",
+            "requirement_ids": [
+              "r8"
+            ],
+            "state": "generated"
+          }
+        ],
+        "schedule": {
+          "days_available": 5,
+          "days": [
+            {
+              "day": 1,
+              "focus": "technical + system-design",
+              "question_ids": [
+                "q3",
+                "q2",
+                "q5"
+              ],
+              "minutes": 130
+            },
+            {
+              "day": 2,
+              "focus": "technical + company-fit",
+              "question_ids": [
+                "q3",
+                "q6"
+              ],
+              "minutes": 85
+            },
+            {
+              "day": 3,
+              "focus": "technical",
+              "question_ids": [
+                "q1",
+                "q4"
+              ],
+              "minutes": 75
+            },
+            {
+              "day": 4,
+              "focus": "technical",
+              "question_ids": [
+                "q1"
+              ],
+              "minutes": 40
+            },
+            {
+              "day": 5,
+              "focus": "technical",
+              "question_ids": [
+                "q2"
+              ],
+              "minutes": 40
+            }
+          ]
+        },
+        "coverage": {
+          "uncovered_requirement_ids": [],
+          "passes": 1
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "case-2",
+      "status": "ok",
+      "kit": {
+        "source": {
+          "company": "www.github.com",
+          "company_url": "https://www.github.com",
+          "role": "Backend Software Engineer",
+          "location": "",
+          "jd_chars": 243,
+          "researched_at": "2026-09-21T18:32:13.109Z",
+          "pages_used": [
+            "https://www.github.com/",
+            "https://www.github.com/#start-of-content",
+            "https://www.github.com/",
+            "https://www.github.com/login",
+            "https://www.github.com/features/ai/github-app"
+          ]
+        },
+        "company_brief": {
+          "summary": "GitHub is a platform where developers, agents, and code come together for software development, offering tools for coding, planning, collaboration, automation, and security.",
+          "what_they_do": "GitHub provides an AI-powered developer platform and tools including GitHub Copilot for code creation, actions for automating workflows, codespaces for dev environments, issue tracking, code review, quality enforcement, and advanced security features.",
+          "sources": [
+            "https://www.github.com/",
+            "https://www.github.com/#start-of-content",
+            "https://www.github.com/login",
+            "https://www.github.com/features/ai/github-app"
+          ]
+        },
+        "role": {
+          "title": "Backend Software Engineer",
+          "seniority": "",
+          "responsibilities": [],
+          "requirements": [
+            {
+              "id": "r1",
+              "text": "Experience with Python.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r2",
+              "text": "Experience designing REST APIs.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r3",
+              "text": "Knowledge of relational databases and SQL.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r4",
+              "text": "Understanding of distributed systems.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r5",
+              "text": "Familiarity with Docker.",
+              "kind": "technical",
+              "priority": "must"
+            },
+            {
+              "id": "r6",
+              "text": "Good problem-solving skills.",
+              "kind": "behavioural",
+              "priority": "must"
+            }
+          ]
+        },
+        "questions": [
+          {
+            "id": "q1",
+            "requirement_ids": [
+              "r1"
+            ],
+            "category": "technical",
+            "prompt": "How do you handle memory management and garbage collection nuances when dealing with large datasets in Python?",
+            "answer_outline": "Discuss reference counting, cyclic garbage collection via the `gc` module, generators/iterators for lazy evaluation, and using tools like `sys.getsizeof()` or memory profilers.",
+            "difficulty": 2,
+            "state": "generated"
+          },
+          {
+            "id": "q2",
+            "requirement_ids": [
+              "r2"
+            ],
+            "category": "technical",
+            "prompt": "Explain your approach to designing a scalable and versioned REST API. How do you handle pagination, filtering, and rate limiting?",
+            "answer_outline": "Cover URI vs header versioning, cursor-based pagination for performance, standard query parameters for filtering, and status codes with clear error payloads.",
+            "difficulty": 2,
+            "state": "generated"
+          },
+          {
+            "id": "q3",
+            "requirement_ids": [
+              "r3"
+            ],
+            "category": "technical",
+            "prompt": "How do you optimize a slow-running SQL query on a relational database containing millions of rows?",
+            "answer_outline": "Explain analyzing execution plans using `EXPLAIN`, adding appropriate indexes (composite/partial), avoiding N+1 query problems, and tuning database connection parameters.",
+            "difficulty": 2,
+            "state": "generated"
+          },
+          {
+            "id": "q4",
+            "requirement_ids": [
+              "r4",
+              "r5"
+            ],
+            "category": "system-design",
+            "prompt": "Design a containerized, distributed worker processing pipeline using Python and Docker. How do you ensure fault tolerance and message deduplication?",
+            "answer_outline": "Discuss container orchestration, message brokers (e.g., RabbitMQ or Redis), idempotency keys for deduplication, and scaling stateless Docker workers horizontally.",
+            "difficulty": 3,
+            "state": "generated"
+          },
+          {
+            "id": "q5",
+            "requirement_ids": [
+              "r6"
+            ],
+            "category": "behavioural",
+            "prompt": "Describe a situation where you had to troubleshoot a complex, critical bug in production under tight deadlines. How did you approach problem-solving?",
+            "answer_outline": "Look for a structured approach: isolating the issue via logs and metrics, forming hypotheses, testing incrementally, applying a hotfix, and performing a post-mortem.",
+            "difficulty": 2,
+            "state": "generated"
+          }
+        ],
+        "flashcards": [
+          {
+            "id": "f1",
+            "front": "How do you handle memory management and garbage collection nuances when dealing with large datasets in Python?",
+            "back": "Discuss reference counting, cyclic garbage collection via the `gc` module, generators/iterators for lazy evaluation, and using tools like `sys.getsizeof()` or memory profilers.",
+            "requirement_ids": [
+              "r1"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f2",
+            "front": "Explain your approach to designing a scalable and versioned REST API. How do you handle pagination, filtering, and rate limiting?",
+            "back": "Cover URI vs header versioning, cursor-based pagination for performance, standard query parameters for filtering, and status codes with clear error payloads.",
+            "requirement_ids": [
+              "r2"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f3",
+            "front": "How do you optimize a slow-running SQL query on a relational database containing millions of rows?",
+            "back": "Explain analyzing execution plans using `EXPLAIN`, adding appropriate indexes (composite/partial), avoiding N+1 query problems, and tuning database connection parameters.",
+            "requirement_ids": [
+              "r3"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f4",
+            "front": "Design a containerized, distributed worker processing pipeline using Python and Docker. How do you ensure fault tolerance and message deduplication?",
+            "back": "Discuss container orchestration, message brokers (e.g., RabbitMQ or Redis), idempotency keys for deduplication, and scaling stateless Docker workers horizontally.",
+            "requirement_ids": [
+              "r4",
+              "r5"
+            ],
+            "state": "generated"
+          },
+          {
+            "id": "f5",
+            "front": "Describe a situation where you had to troubleshoot a complex, critical bug in production under tight deadlines. How did you approach problem-solving?",
+            "back": "Look for a structured approach: isolating the issue via logs and metrics, forming hypotheses, testing incrementally, applying a hotfix, and performing a post-mortem.",
+            "requirement_ids": [
+              "r6"
+            ],
+            "state": "generated"
+          }
+        ],
+        "schedule": {
+          "days_available": 3,
+          "days": [
+            {
+              "day": 1,
+              "focus": "system-design + technical",
+              "question_ids": [
+                "q4",
+                "q2"
+              ],
+              "minutes": 85
+            },
+            {
+              "day": 2,
+              "focus": "system-design + technical",
+              "question_ids": [
+                "q4",
+                "q3"
+              ],
+              "minutes": 85
+            },
+            {
+              "day": 3,
+              "focus": "technical + behavioural",
+              "question_ids": [
+                "q1",
+                "q5"
+              ],
+              "minutes": 80
+            }
+          ]
+        },
+        "coverage": {
+          "uncovered_requirement_ids": [],
+          "passes": 1
+        }
+      },
+      "error": null
+    }
+  ]
+}

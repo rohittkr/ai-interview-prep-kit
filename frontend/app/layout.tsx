@@ -1,0 +1,1 @@
+import './globals.css';export const metadata={title:'AI Interview Prep Kit',description:'Research-driven interview preparation'};export default function RootLayout({children}:{children:React.ReactNode}){return <html><body>{children}</body></html>}
