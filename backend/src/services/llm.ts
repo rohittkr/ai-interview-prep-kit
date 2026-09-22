@@ -7,87 +7,114 @@ async function callGemini(prompt: string): Promise<string> {
     throw new Error('GEMINI_API_KEY is not configured');
   }
 
-  const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
+  const configuredModel =
+    process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
 
-  const url =
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent` +
-    `?key=${encodeURIComponent(key)}`;
+  const models = [
+    configuredModel,
+    ...(configuredModel !== 'gemini-3.1-flash-lite'
+      ? ['gemini-3.1-flash-lite']
+      : [])
+  ];
+
+  const temporaryStatuses = [429, 500, 502, 503, 504];
 
   let lastError = '';
 
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt
-              }
-            ]
+  for (const model of models) {
+    const url =
+      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent` +
+      `?key=${encodeURIComponent(key)}`;
+
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt
+                }
+              ]
+            }
+          ],
+          generationConfig: {
+            temperature: 0.2,
+            responseMimeType: 'application/json'
           }
-        ],
-        generationConfig: {
-          temperature: 0.2,
-          responseMimeType: 'application/json'
+        })
+      });
+
+      const body = await response.text();
+
+      if (response.ok) {
+        const jsonResponse: any = JSON.parse(body);
+
+        const text =
+          jsonResponse.candidates?.[0]?.content?.parts
+            ?.map((part: any) => part.text || '')
+            .join('') || '';
+
+        if (!text) {
+          throw new Error(
+            `Gemini returned an empty response using model ${model}`
+          );
         }
-      })
-    });
-
-    const body = await response.text();
-
-    if (response.ok) {
-      const jsonResponse: any = JSON.parse(body);
-
-      return (
-        jsonResponse.candidates?.[0]?.content?.parts
-          ?.map((part: any) => part.text || '')
-          .join('') || ''
-      );
-    }
-
-    lastError = `LLM HTTP ${response.status}: ${body.slice(0, 1000)}`;
-
-    /*
-     * Retry temporary provider failures.
-     */
-    if (
-      response.status === 429 ||
-      response.status === 500 ||
-      response.status === 502 ||
-      response.status === 503 ||
-      response.status === 504
-    ) {
-      if (attempt < 2) {
-        const retryAfter = response.headers.get('retry-after');
-        const retrySeconds = retryAfter
-          ? Number(retryAfter)
-          : NaN;
-
-        const delay = Number.isFinite(retrySeconds)
-          ? Math.max(1000, retrySeconds * 1000)
-          : 2000 * Math.pow(2, attempt);
 
         console.log(
-          `Gemini ${response.status}; retrying in ${delay}ms ` +
-          `(attempt ${attempt + 2}/3)`
+          `Gemini generation succeeded using ${model}`
         );
 
-        await new Promise((resolve) => setTimeout(resolve, delay));
-
-        continue;
+        return text;
       }
-    }
 
-    throw new Error(lastError);
+      lastError =
+        `LLM HTTP ${response.status}: ${body.slice(0, 1000)}`;
+
+      if (temporaryStatuses.includes(response.status)) {
+        if (attempt < 1) {
+          const retryAfter =
+            response.headers.get('retry-after');
+
+          const retrySeconds = retryAfter
+            ? Number(retryAfter)
+            : NaN;
+
+          const delay = Number.isFinite(retrySeconds)
+            ? Math.max(1000, retrySeconds * 1000)
+            : 2000;
+
+          console.log(
+            `Gemini ${response.status} on ${model}; ` +
+              `retrying in ${delay}ms (attempt 2/2)`
+          );
+
+          await new Promise((resolve) =>
+            setTimeout(resolve, delay)
+          );
+
+          continue;
+        }
+
+        console.warn(
+          `Gemini model ${model} unavailable after retries. ` +
+            `Trying fallback model if available.`
+        );
+
+        break;
+      }
+
+      throw new Error(lastError);
+    }
   }
 
   throw new Error(
-    lastError || 'LLM rate limited or unavailable after retries'
+    lastError ||
+      'All configured Gemini models are temporarily unavailable'
   );
 }
 
@@ -206,13 +233,6 @@ ${context.slice(0, 50000)}
 `)
   );
 
-  /*
-   * Deterministic validation/normalization.
-   *
-   * LLM output is never trusted blindly.
-   * Ensure difficulty always conforms to:
-   * 1 | 2 | 3
-   */
   return questions.map((question: any) => {
     const numericDifficulty = Number(question.difficulty);
 
